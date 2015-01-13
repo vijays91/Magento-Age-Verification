@@ -1,0 +1,78 @@
+<?php 
+$enable	= Mage::helper('vijayageverify')->ageverify_enable();
+if(Mage::getSingleton('core/session')->getAgeVerifydate() != "m78v20a89" && $enable)
+{
+	$width 	 = Mage::helper('vijayageverify')->ageverify_popupwidth();
+	$height  = Mage::helper('vijayageverify')->ageverify_popupheight();
+	$content = Mage::helper('vijayageverify')->ageverify_content();
+	$redirect_url = Mage::helper('vijayageverify')->ageverify_redirect();
+	if (!preg_match("~^(?:f|ht)tps?://~i", $redirect_url)) {
+		$redirect_url = "http://" . $redirect_url;
+	}
+	?>
+	
+	<a id="age-verify" href="#inline1" class="fancybox" rel="group">&nbsp;</a>
+	<div id="inline1" style="width:<?php echo $width; ?>px;height:<?php echo $height; ?>px;">
+		<div class="verify">		
+			<div class="verify_logo">
+				<img src="<?php echo $this->getSkinUrl()."images/fancybox/security.jpg"; ?>" />
+			</div>
+			
+			<p>&nbsp;</p>	
+			<div class="verify">
+				<h4><?php echo $this->__('%s', $content); ?></h4>
+			</div>
+			<div>&nbsp;</div>
+
+			<div class="verify_actions">
+				<button class="button enter" type="submit" onclick="age_verify();">
+					<span>
+						<span><?php echo $this->__('Yes');?></span>
+					</span>
+				</button>
+				<button class="button enter" type="submit" onclick="window.location.href='<?php echo $redirect_url; ?>'">
+					<span>
+						<span><?php echo $this->__('No');?></span>
+					</span>
+				</button>
+				<div id="age_verify_loader">&nbsp;</div>
+			</div>
+			<div>&nbsp;</div>
+			
+			<div class="verify">
+				<?php echo $this->__('You must verify your age!!!');?>
+			</div>
+		</div>		
+	</div>
+	
+	<script type="text/javascript">
+		var jQuery = jQuery.noConflict();
+		jQuery(document).ready(function() {
+			jQuery(".fancybox").fancybox({
+				'closeBtn' : false,
+				helpers   : { 
+					overlay : {closeClick: false}
+				}
+			}).trigger('click');
+		});
+		
+		function age_verify()
+		{
+			$('age_verify_loader').setStyle({display: 'block'});
+			new Ajax.Request("<?php echo Mage::getBaseUrl()."ageverify/index/index"; ?>", {
+				method:'post',
+				parameters: { set:1},
+				onSuccess: function(transport) {
+					var response = transport.responseText || "no response text";
+					obj = JSON.parse(response);
+					if(obj.success == 200)
+						window.location.reload();
+					else
+						alert('Something went wrong...');
+					$('age_verify_loader').setStyle({display: 'none'});
+				},
+				onFailure: function() { alert('Something went wrong...'); }
+			});
+		}
+	</script>
+<?php } ?>

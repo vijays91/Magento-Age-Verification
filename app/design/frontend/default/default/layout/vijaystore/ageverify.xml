@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<default>
+		<reference name="head">
+			<action method="addItem"><type>skin_js</type><name>js/fancybox/jquery.v1.11.1.js</name><params/></action>
+			<action method="addItem"><type>skin_js</type><name>js/fancybox/jquery.noconflict.js</name><params/></action>
+			<action method="addItem"><type>skin_js</type><name>js/fancybox/jquery.fancybox.js</name><params/></action>
+			<action method="addItem"><type>skin_css</type><name>css/fancybox/jquery.fancybox.css</name><params/></action>
+		</reference>
+		
+		<reference name="before_body_end">
+			<block type="core/template" name="ageverify" template="vijaystore/ageverify.phtml" />
+		</reference>
+	</default>
+</layout>

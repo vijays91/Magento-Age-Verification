@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+
+<config>
+
+	<modules>
+		<Vijay_Ageverify>
+			<version>1.0.0</version>
+		</Vijay_Ageverify>
+	</modules>
+	
+	<frontend>
+		<routers>
+			<ageverify>
+				<use>standard</use>
+				<args>
+					<module>Vijay_Ageverify</module>
+					<frontName>ageverify</frontName>
+				</args>
+			</ageverify>
+		</routers>		
+		 <layout>
+			<updates>
+				<vijayageverify>
+					<file>vijaystore/ageverify.xml</file>
+				</vijayageverify>
+			</updates>
+		 </layout>
+	</frontend>
+		
+	<global>
+		<blocks>
+			<vijayageverify>
+				<class>Vijay_Ageverify_Block</class>
+			</vijayageverify>
+		</blocks>
+		
+		<helpers>
+			<vijayageverify>
+				<class>Vijay_Ageverify_Helper</class>
+			</vijayageverify>
+		</helpers>
+	</global>
+	
+	<adminhtml>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+				    <children>
+						<system>
+							<children>
+								<config>
+									<children>
+										<ageverify_tab>
+											<title>Age Verification Setting</title>
+										</ageverify_tab>				
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+	</adminhtml>
+	
+	<default>
+		<ageverify_tab>
+			<ageverify_setting>
+				<ageverify_active>1</ageverify_active>
+				<ageverify_width>250</ageverify_width>
+				<ageverify_height>400</ageverify_height>
+				<ageverify_redirect>http://www.yahoo.co.in</ageverify_redirect>
+				<ageverify_content>ARE YOU 20 OR OLDER?</ageverify_content>
+			</ageverify_setting>
+		</ageverify_tab>
+	</default>
+</config>

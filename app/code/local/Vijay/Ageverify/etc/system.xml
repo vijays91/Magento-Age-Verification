@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <myconf_vijaystore translate="label" module="vijayageverify">
+            <label>VijayStore</label>
+            <sort_order>300</sort_order>
+        </myconf_vijaystore>
+    </tabs>	
+    <sections>
+        <ageverify_tab translate="label" module="vijayageverify">
+            <label>Age Verification</label>
+            <tab>myconf_vijaystore</tab>
+            <sort_order>1</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <ageverify_setting translate="label comment">
+                    <label>Age Verification Setting</label>
+                    <sort_order>503</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                      <ageverify_active translate="label comment">
+                            <label>Age Verification Setting</label>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<comment>Age Verification Enable/Disable</comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ageverify_active>
+
+						<ageverify_width translate="label comment">
+                            <label>Popup Width</label>
+							<frontend_type>text</frontend_type>
+							<validate>required-entry validate-number</validate><!--validate-digits-range digits-range-100-1500 -->
+							<comment>No need to put 'px'</comment>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ageverify_width>
+						
+						<ageverify_height translate="label comment">
+                            <label>Popup Height</label>
+							<frontend_type>text</frontend_type>
+							<validate>required-entry validate-number</validate><!--validate-digits-range digits-range-100-1500 -->
+							<comment>No need to put 'px'</comment>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ageverify_height>
+						
+						<ageverify_redirect translate="label comment">
+                            <label>Redirect URL</label>
+							<frontend_type>text</frontend_type>
+							<validate>required-entry validate-url</validate>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ageverify_redirect>						
+						
+						<ageverify_content translate="label comment">
+                            <label>Content</label>
+							<frontend_type>textarea</frontend_type>
+							<validate>required-entry</validate>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ageverify_content>
+						
+                     </fields>
+                </ageverify_setting>		
+            </groups>
+        </ageverify_tab>
+    </sections>
+</config>
